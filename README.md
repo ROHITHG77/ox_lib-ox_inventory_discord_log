@@ -3,3 +3,4 @@ This is a replacement for ox_lib/imports/logger/server.lua which allows ox lib l
 **Replace ox_lib/imports/logger/server.lua with the given above server.lua**
 **Add This in Server.cfg**<br/>
 set discord:webhook "YOUR_WEBHOOK_URL"
+Contact me :- rgxprime (Discord)
