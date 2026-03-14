@@ -75,11 +75,8 @@ local function cachePlayerData(playerSource)
     return playerCache[playerSource]
 end
 
-AddEventHandler('playerConnecting', function()
-    cachePlayerData(source)
-end)
-
 AddEventHandler('playerDropped', function()
+    print(('Removing data for dropped player %s (ID: %d)'):format(GetPlayerName(source) or 'Unknown', source))
     local cached = playerCache[source]
     if cached then
         for _, idValue in pairs(cached.identifiers) do
@@ -105,6 +102,16 @@ local function getPlayerInfo(logSource)
         end
 
         local playerId = identifierToSource[idValue]
+        if not playerId then
+            for _, pid in ipairs(GetPlayers()) do
+                pid = tonumber(pid)
+                if pid and not playerCache[pid] then
+                    cachePlayerData(pid)
+                end
+            end
+            playerId = identifierToSource[idValue]
+        end
+
         if playerId then
             local cached = cachePlayerData(playerId)
             return {
