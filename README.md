@@ -11,6 +11,8 @@ Replace `ox_lib/imports/logger/server.lua` with this file.
 Add the following to your `server.cfg`:
 
 ```
+# Logging via ox_lib (0: Disable, 1: Standard, 2: Include AddItem/RemoveItem, and all shop purchases)
+set inventory:loglevel 2
 set ox:logger "discord"
 set discord:webhook "YOUR_WEBHOOK_URL"
 ```
